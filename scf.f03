@@ -10,7 +10,7 @@ INCLUDE 'scfMod.f03'
 !
 !     USE Connections
 !
-      use VibAnalysisMod
+      use scfMod
       use mqc_general
       use mqc_gaussian
       use mqc_algebra2
@@ -34,7 +34,7 @@ INCLUDE 'scfMod.f03'
 !
 !     Format Statements
 !
- 1000 Format(1x,'Enter VibAnalysis.')
+ 1000 Format(1x,'Enter SCF.')
  1010 Format(3x,'Matrix File: ',A,/)
  1100 Format(1x,'nAtoms=',I4)
  1200 Format(1x,'Freezing atom number ',I4)
@@ -42,6 +42,7 @@ INCLUDE 'scfMod.f03'
 !
 !
       write(IOut,1000)
+      call MQC_Gaussian_SetDEBUG(.false.)
 !
 !     Open the Gaussian matrix file and load the number of atomic centers.
 
@@ -90,6 +91,7 @@ INCLUDE 'scfMod.f03'
       call fock%print(header='Fock Matrix')
       write(*,*)
       write(*,*)' About to call getArray to find the Gaussian scalars array...'
+      call MQC_Gaussian_SetDEBUG(.true.)
       call GMatrixFile%getArray('GAUSSIAN SCALARS',mqcVarOut=scalars)
       write(*,*)' Found the Gaussian scalars.'
       write(*,*)' Trying to write the Gaussian scalars array...'
@@ -247,5 +249,5 @@ INCLUDE 'scfMod.f03'
       call mqc_print(IOut,hEVecs,header='Displacements')
 !
   999 Continue
-      write(iOut,*)' END OF VIBANALYSIS'
+      write(iOut,*)' END OF SCF'
       end program SCF
