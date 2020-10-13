@@ -1,19 +1,15 @@
-INCLUDE 'scfEnergyTerms_mod.f03'
-      Program scfEnergyTerms
+INCLUDE 'scf_mod.f03'
+      program scf
 !
-!     This program reads a series of matrices from a Gaussian matrix file
-!     generated during an SCF calculation and then computes 1-electron and
-!     2-electron energy contributions. The program also reads atomic numbers and
-!     Cartesian coordinates from the matrix file to evaluate the nuclear-nuclear
-!     repulsion energy. Using these component values, this program ends by
-!     reporting the total SCF energy.
+!     This program reads a Gaussian matrix file and carries out a Hartree-Fock
+!     SCF calculation.
 !
 !     -H. P. Hratchian, 2020.
 !
 !
 !     USE Connections
 !
-      use scfEnergyTerms_mod
+      use scf_mod
 !
 !     Variable Declarations
 !
@@ -191,4 +187,4 @@ INCLUDE 'scfEnergyTerms_mod.f03'
 !
   999 Continue
       write(iOut,8999)
-      end program scfEnergyTerms
+      end program scf

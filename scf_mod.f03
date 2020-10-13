@@ -1,6 +1,6 @@
-      module scfEnergyTerms_mod
+      module scf_mod
 !
-!     This module supports the program scfEnergyTerms.
+!     This module supports the program SCF.
 !
 !     -H. P. Hratchian, 2020.
 !
@@ -156,4 +156,4 @@
       end subroutine formExchange
 !
 !
-      end module scfEnergyTerms_mod
+      end module scf_mod
