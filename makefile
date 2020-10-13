@@ -28,10 +28,7 @@ all: scf.exe
 
 #
 # Generic rule for building general executable program (*.exe) from a standard
-# f90 source (*.f90) file.
+# f03 source (*.f03) file.
 #
-#hph%.exe: %.f90
-	$(RunF) $(LIBS) -o $*.exe $*.f90
-
-scf.exe: scf.f03 $(MQCLIB)/libmqc.a
-	$(RunF) $(LIBS) $(Prof) -I$(MQCMODS) -o scf.exe scf.f03 $(MQCLIB)/libmqc.a
+%.exe: %.f03 %_mod.f03 $(MQCLIB)/libmqc.a
+	$(RunF) $(LIBS) $(Prof) -I$(MQCMODS) -o $*.exe $*.f03 $(MQCLIB)/libmqc.a
